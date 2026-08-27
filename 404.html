@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PaceSync</title>
+    <script>
+      // GitHub Pages 没有服务端路由，直接访问 /rules 会落到 404。
+      // 这里把原路径塞进 sessionStorage 后跳回首页，由前端 router 接管。
+      sessionStorage.setItem(
+        'pacesync.redirect',
+        location.pathname + location.search + location.hash,
+      )
+      location.replace(
+        location.origin +
+          (document.querySelector('base')?.getAttribute('href') || '/'),
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
